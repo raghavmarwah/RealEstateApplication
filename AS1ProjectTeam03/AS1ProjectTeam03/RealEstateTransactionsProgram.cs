@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace AS1ProjectTeam03
 {
-    static class Program
+    static class RealEstateTransactionsProgram
     {
         /// <summary>
         /// The main entry point for the application.
@@ -16,7 +16,7 @@ namespace AS1ProjectTeam03
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new RealEstateTransactionsForm());
         }
     }
 }

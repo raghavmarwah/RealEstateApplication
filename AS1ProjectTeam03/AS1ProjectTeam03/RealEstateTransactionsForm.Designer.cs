@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewAllTransactions = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelAllTransactionsCount = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelAllTransactionsAveragePrice = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.listBox4 = new System.Windows.Forms.ListBox();
+            this.buttonResetFilters = new System.Windows.Forms.Button();
+            this.listBoxCities = new System.Windows.Forms.ListBox();
+            this.listBoxNumberOfBedrooms = new System.Windows.Forms.ListBox();
+            this.listBoxNumberOfbathrooms = new System.Windows.Forms.ListBox();
+            this.listBoxHouseTypes = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -47,23 +47,23 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxMinPrice = new System.Windows.Forms.TextBox();
+            this.textBoxMaxPrice = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.textBoxMaxArea = new System.Windows.Forms.TextBox();
+            this.textBoxMinArea = new System.Windows.Forms.TextBox();
+            this.checkBoxSearchOnPrice = new System.Windows.Forms.CheckBox();
+            this.checkBoxSearchOnArea = new System.Windows.Forms.CheckBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.label18 = new System.Windows.Forms.Label();
+            this.dataGridViewFilteredTransactions = new System.Windows.Forms.DataGridView();
+            this.labelFilteredTransactionsAveragePrice = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
+            this.labelFilteredTransactionsCount = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAllTransactions)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFilteredTransactions)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -77,14 +77,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "All Transactions";
             // 
-            // dataGridView1
+            // dataGridViewAllTransactions
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 53);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 37;
-            this.dataGridView1.Size = new System.Drawing.Size(1633, 358);
-            this.dataGridView1.TabIndex = 1;
+            this.dataGridViewAllTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAllTransactions.Location = new System.Drawing.Point(15, 53);
+            this.dataGridViewAllTransactions.Name = "dataGridViewAllTransactions";
+            this.dataGridViewAllTransactions.RowTemplate.Height = 37;
+            this.dataGridViewAllTransactions.Size = new System.Drawing.Size(1633, 358);
+            this.dataGridViewAllTransactions.TabIndex = 1;
             // 
             // label2
             // 
@@ -95,14 +95,14 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Count = ";
             // 
-            // label3
+            // labelAllTransactionsCount
             // 
-            this.label3.AutoSize = true;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Location = new System.Drawing.Point(326, 446);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(2, 31);
-            this.label3.TabIndex = 3;
+            this.labelAllTransactionsCount.AutoSize = true;
+            this.labelAllTransactionsCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelAllTransactionsCount.Location = new System.Drawing.Point(326, 446);
+            this.labelAllTransactionsCount.Name = "labelAllTransactionsCount";
+            this.labelAllTransactionsCount.Size = new System.Drawing.Size(2, 31);
+            this.labelAllTransactionsCount.TabIndex = 3;
             // 
             // label4
             // 
@@ -113,14 +113,14 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Average Price = ";
             // 
-            // label5
+            // labelAllTransactionsAveragePrice
             // 
-            this.label5.AutoSize = true;
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label5.Location = new System.Drawing.Point(913, 446);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(2, 31);
-            this.label5.TabIndex = 5;
+            this.labelAllTransactionsAveragePrice.AutoSize = true;
+            this.labelAllTransactionsAveragePrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelAllTransactionsAveragePrice.Location = new System.Drawing.Point(913, 446);
+            this.labelAllTransactionsAveragePrice.Name = "labelAllTransactionsAveragePrice";
+            this.labelAllTransactionsAveragePrice.Size = new System.Drawing.Size(2, 31);
+            this.labelAllTransactionsAveragePrice.TabIndex = 5;
             // 
             // label6
             // 
@@ -133,50 +133,50 @@
             this.label6.TabIndex = 6;
             this.label6.Text = "Filters";
             // 
-            // button1
+            // buttonResetFilters
             // 
-            this.button1.Location = new System.Drawing.Point(418, 518);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(227, 43);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Reset Filters";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonResetFilters.Location = new System.Drawing.Point(418, 518);
+            this.buttonResetFilters.Name = "buttonResetFilters";
+            this.buttonResetFilters.Size = new System.Drawing.Size(227, 43);
+            this.buttonResetFilters.TabIndex = 7;
+            this.buttonResetFilters.Text = "Reset Filters";
+            this.buttonResetFilters.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // listBoxCities
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 29;
-            this.listBox1.Location = new System.Drawing.Point(15, 633);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(474, 265);
-            this.listBox1.TabIndex = 8;
+            this.listBoxCities.FormattingEnabled = true;
+            this.listBoxCities.ItemHeight = 29;
+            this.listBoxCities.Location = new System.Drawing.Point(15, 633);
+            this.listBoxCities.Name = "listBoxCities";
+            this.listBoxCities.Size = new System.Drawing.Size(474, 265);
+            this.listBoxCities.TabIndex = 8;
             // 
-            // listBox2
+            // listBoxNumberOfBedrooms
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 29;
-            this.listBox2.Location = new System.Drawing.Point(600, 633);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(153, 265);
-            this.listBox2.TabIndex = 9;
+            this.listBoxNumberOfBedrooms.FormattingEnabled = true;
+            this.listBoxNumberOfBedrooms.ItemHeight = 29;
+            this.listBoxNumberOfBedrooms.Location = new System.Drawing.Point(600, 633);
+            this.listBoxNumberOfBedrooms.Name = "listBoxNumberOfBedrooms";
+            this.listBoxNumberOfBedrooms.Size = new System.Drawing.Size(153, 265);
+            this.listBoxNumberOfBedrooms.TabIndex = 9;
             // 
-            // listBox3
+            // listBoxNumberOfbathrooms
             // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.ItemHeight = 29;
-            this.listBox3.Location = new System.Drawing.Point(863, 633);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(147, 265);
-            this.listBox3.TabIndex = 10;
+            this.listBoxNumberOfbathrooms.FormattingEnabled = true;
+            this.listBoxNumberOfbathrooms.ItemHeight = 29;
+            this.listBoxNumberOfbathrooms.Location = new System.Drawing.Point(863, 633);
+            this.listBoxNumberOfbathrooms.Name = "listBoxNumberOfbathrooms";
+            this.listBoxNumberOfbathrooms.Size = new System.Drawing.Size(147, 265);
+            this.listBoxNumberOfbathrooms.TabIndex = 10;
             // 
-            // listBox4
+            // listBoxHouseTypes
             // 
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.ItemHeight = 29;
-            this.listBox4.Location = new System.Drawing.Point(1122, 633);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(258, 265);
-            this.listBox4.TabIndex = 11;
+            this.listBoxHouseTypes.FormattingEnabled = true;
+            this.listBoxHouseTypes.ItemHeight = 29;
+            this.listBoxHouseTypes.Location = new System.Drawing.Point(1122, 633);
+            this.listBoxHouseTypes.Name = "listBoxHouseTypes";
+            this.listBoxHouseTypes.Size = new System.Drawing.Size(258, 265);
+            this.listBoxHouseTypes.TabIndex = 11;
             // 
             // label7
             // 
@@ -242,19 +242,19 @@
             this.label13.TabIndex = 18;
             this.label13.Text = "Max";
             // 
-            // textBox1
+            // textBoxMinPrice
             // 
-            this.textBox1.Location = new System.Drawing.Point(234, 937);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(239, 35);
-            this.textBox1.TabIndex = 19;
+            this.textBoxMinPrice.Location = new System.Drawing.Point(234, 937);
+            this.textBoxMinPrice.Name = "textBoxMinPrice";
+            this.textBoxMinPrice.Size = new System.Drawing.Size(239, 35);
+            this.textBoxMinPrice.TabIndex = 19;
             // 
-            // textBox2
+            // textBoxMaxPrice
             // 
-            this.textBox2.Location = new System.Drawing.Point(234, 1011);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(236, 35);
-            this.textBox2.TabIndex = 20;
+            this.textBoxMaxPrice.Location = new System.Drawing.Point(234, 1011);
+            this.textBoxMaxPrice.Name = "textBoxMaxPrice";
+            this.textBoxMaxPrice.Size = new System.Drawing.Size(236, 35);
+            this.textBoxMaxPrice.TabIndex = 20;
             // 
             // label14
             // 
@@ -284,39 +284,39 @@
             this.label16.TabIndex = 22;
             this.label16.Text = "Min";
             // 
-            // textBox3
+            // textBoxMaxArea
             // 
-            this.textBox3.Location = new System.Drawing.Point(972, 1011);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(236, 35);
-            this.textBox3.TabIndex = 25;
+            this.textBoxMaxArea.Location = new System.Drawing.Point(972, 1011);
+            this.textBoxMaxArea.Name = "textBoxMaxArea";
+            this.textBoxMaxArea.Size = new System.Drawing.Size(236, 35);
+            this.textBoxMaxArea.TabIndex = 25;
             // 
-            // textBox4
+            // textBoxMinArea
             // 
-            this.textBox4.Location = new System.Drawing.Point(972, 937);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(239, 35);
-            this.textBox4.TabIndex = 24;
+            this.textBoxMinArea.Location = new System.Drawing.Point(972, 937);
+            this.textBoxMinArea.Name = "textBoxMinArea";
+            this.textBoxMinArea.Size = new System.Drawing.Size(239, 35);
+            this.textBoxMinArea.TabIndex = 24;
             // 
-            // checkBox1
+            // checkBoxSearchOnPrice
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(238, 1083);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(216, 33);
-            this.checkBox1.TabIndex = 26;
-            this.checkBox1.Text = "Search on Price";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxSearchOnPrice.AutoSize = true;
+            this.checkBoxSearchOnPrice.Location = new System.Drawing.Point(238, 1083);
+            this.checkBoxSearchOnPrice.Name = "checkBoxSearchOnPrice";
+            this.checkBoxSearchOnPrice.Size = new System.Drawing.Size(216, 33);
+            this.checkBoxSearchOnPrice.TabIndex = 26;
+            this.checkBoxSearchOnPrice.Text = "Search on Price";
+            this.checkBoxSearchOnPrice.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // checkBoxSearchOnArea
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(980, 1083);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(298, 33);
-            this.checkBox2.TabIndex = 27;
-            this.checkBox2.Text = "Search on Surface Area";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBoxSearchOnArea.AutoSize = true;
+            this.checkBoxSearchOnArea.Location = new System.Drawing.Point(980, 1083);
+            this.checkBoxSearchOnArea.Name = "checkBoxSearchOnArea";
+            this.checkBoxSearchOnArea.Size = new System.Drawing.Size(298, 33);
+            this.checkBoxSearchOnArea.TabIndex = 27;
+            this.checkBoxSearchOnArea.Text = "Search on Surface Area";
+            this.checkBoxSearchOnArea.UseVisualStyleBackColor = true;
             // 
             // label17
             // 
@@ -329,23 +329,23 @@
             this.label17.TabIndex = 28;
             this.label17.Text = "Selected Transactions";
             // 
-            // dataGridView2
+            // dataGridViewFilteredTransactions
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(18, 1229);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 37;
-            this.dataGridView2.Size = new System.Drawing.Size(1630, 303);
-            this.dataGridView2.TabIndex = 29;
+            this.dataGridViewFilteredTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewFilteredTransactions.Location = new System.Drawing.Point(18, 1229);
+            this.dataGridViewFilteredTransactions.Name = "dataGridViewFilteredTransactions";
+            this.dataGridViewFilteredTransactions.RowTemplate.Height = 37;
+            this.dataGridViewFilteredTransactions.Size = new System.Drawing.Size(1630, 303);
+            this.dataGridViewFilteredTransactions.TabIndex = 29;
             // 
-            // label18
+            // labelFilteredTransactionsAveragePrice
             // 
-            this.label18.AutoSize = true;
-            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label18.Location = new System.Drawing.Point(913, 1560);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(2, 31);
-            this.label18.TabIndex = 33;
+            this.labelFilteredTransactionsAveragePrice.AutoSize = true;
+            this.labelFilteredTransactionsAveragePrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelFilteredTransactionsAveragePrice.Location = new System.Drawing.Point(913, 1560);
+            this.labelFilteredTransactionsAveragePrice.Name = "labelFilteredTransactionsAveragePrice";
+            this.labelFilteredTransactionsAveragePrice.Size = new System.Drawing.Size(2, 31);
+            this.labelFilteredTransactionsAveragePrice.TabIndex = 33;
             // 
             // label19
             // 
@@ -356,14 +356,14 @@
             this.label19.TabIndex = 32;
             this.label19.Text = "Average Price = ";
             // 
-            // label20
+            // labelFilteredTransactionsCount
             // 
-            this.label20.AutoSize = true;
-            this.label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label20.Location = new System.Drawing.Point(326, 1560);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(2, 31);
-            this.label20.TabIndex = 31;
+            this.labelFilteredTransactionsCount.AutoSize = true;
+            this.labelFilteredTransactionsCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelFilteredTransactionsCount.Location = new System.Drawing.Point(326, 1560);
+            this.labelFilteredTransactionsCount.Name = "labelFilteredTransactionsCount";
+            this.labelFilteredTransactionsCount.Size = new System.Drawing.Size(2, 31);
+            this.labelFilteredTransactionsCount.TabIndex = 31;
             // 
             // label21
             // 
@@ -379,21 +379,21 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1667, 1627);
-            this.Controls.Add(this.label18);
+            this.Controls.Add(this.labelFilteredTransactionsAveragePrice);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.label20);
+            this.Controls.Add(this.labelFilteredTransactionsCount);
             this.Controls.Add(this.label21);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dataGridViewFilteredTransactions);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.checkBoxSearchOnArea);
+            this.Controls.Add(this.checkBoxSearchOnPrice);
+            this.Controls.Add(this.textBoxMaxArea);
+            this.Controls.Add(this.textBoxMinArea);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxMaxPrice);
+            this.Controls.Add(this.textBoxMinPrice);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -401,23 +401,23 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.listBox4);
-            this.Controls.Add(this.listBox3);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.listBoxHouseTypes);
+            this.Controls.Add(this.listBoxNumberOfbathrooms);
+            this.Controls.Add(this.listBoxNumberOfBedrooms);
+            this.Controls.Add(this.listBoxCities);
+            this.Controls.Add(this.buttonResetFilters);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.labelAllTransactionsAveragePrice);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelAllTransactionsCount);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewAllTransactions);
             this.Controls.Add(this.label1);
             this.Name = "RealEstateTransactionsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Load += new System.EventHandler(this.RealEstateTransactionsForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAllTransactions)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFilteredTransactions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -426,17 +426,17 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewAllTransactions;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelAllTransactionsCount;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelAllTransactionsAveragePrice;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.Button buttonResetFilters;
+        private System.Windows.Forms.ListBox listBoxCities;
+        private System.Windows.Forms.ListBox listBoxNumberOfBedrooms;
+        private System.Windows.Forms.ListBox listBoxNumberOfbathrooms;
+        private System.Windows.Forms.ListBox listBoxHouseTypes;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
@@ -444,20 +444,20 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxMinPrice;
+        private System.Windows.Forms.TextBox textBoxMaxPrice;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.TextBox textBoxMaxArea;
+        private System.Windows.Forms.TextBox textBoxMinArea;
+        private System.Windows.Forms.CheckBox checkBoxSearchOnPrice;
+        private System.Windows.Forms.CheckBox checkBoxSearchOnArea;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.DataGridView dataGridViewFilteredTransactions;
+        private System.Windows.Forms.Label labelFilteredTransactionsAveragePrice;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label labelFilteredTransactionsCount;
         private System.Windows.Forms.Label label21;
     }
 }

@@ -30,6 +30,52 @@ namespace AS1ProjectTeam03
             listBoxNumberOfBathrooms.SelectedIndexChanged += ListBoxNumberOfBathrooms_SelectedIndexChanged;
             listBoxHouseTypes.SelectedIndexChanged += ListBoxHouseTypes_SelectedIndexChanged;
 
+            //Registering helper functions with TextBox event handlers.
+            textBoxMinPrice.TextChanged += TextBoxMinPrice_TextChanged;
+            textBoxMaxPrice.TextChanged += TextBoxMaxPrice_TextChanged;
+            textBoxMinArea.TextChanged += TextBoxMinArea_TextChanged;
+            textBoxMaxArea.TextChanged += TextBoxMaxArea_TextChanged;
+
+            //Registering helper functions with CheckBox event handlers.
+            checkBoxSearchOnPrice.CheckedChanged += CheckBoxSearchOnPrice_CheckedChanged;
+            checkBoxSearchOnArea.CheckedChanged += CheckBoxSearchOnArea_CheckedChanged;
+
+        }
+
+        private void CheckBoxSearchOnArea_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxSearchOnArea.Checked)
+                updateDataGridViewFilteredTransactions();
+        }
+
+        private void CheckBoxSearchOnPrice_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxSearchOnPrice.Checked)
+                updateDataGridViewFilteredTransactions();
+        }
+
+        private void TextBoxMaxArea_TextChanged(object sender, EventArgs e)
+        {
+            if (checkBoxSearchOnArea.Checked)
+                updateDataGridViewFilteredTransactions();
+        }
+
+        private void TextBoxMinArea_TextChanged(object sender, EventArgs e)
+        {
+            if (checkBoxSearchOnArea.Checked)
+                updateDataGridViewFilteredTransactions();
+        }
+
+        private void TextBoxMaxPrice_TextChanged(object sender, EventArgs e)
+        {
+            if (checkBoxSearchOnPrice.Checked)
+                updateDataGridViewFilteredTransactions();
+        }
+
+        private void TextBoxMinPrice_TextChanged(object sender, EventArgs e)
+        {
+            if (checkBoxSearchOnPrice.Checked)
+                updateDataGridViewFilteredTransactions();
         }
 
         private void ListBoxHouseTypes_SelectedIndexChanged(object sender, EventArgs e)
@@ -301,13 +347,15 @@ namespace AS1ProjectTeam03
             {
                 if (checkBoxSearchOnPrice.Checked)
                 {
+                    //using double just to be safe!
                     double minPrice = double.Parse(textBoxMinPrice.Text);
                     double maxPrice = double.Parse(textBoxMaxPrice.Text);
                     finalQuery = finalQuery.Where(p => p.Price >= minPrice && p.Price <= maxPrice);
                 }
             }catch(Exception ex)
             {
-                MessageBox.Show("");
+                MessageBox.Show("Price is missing or is not an integer");
+                checkBoxSearchOnPrice.Checked = false;
             }
 
             //checkig surface area constraint
@@ -315,6 +363,7 @@ namespace AS1ProjectTeam03
             {
                 if (checkBoxSearchOnArea.Checked)
                 {
+                    //using double just to be safe!
                     double minArea = double.Parse(textBoxMinArea.Text);
                     double maxArea = double.Parse(textBoxMaxArea.Text);
                     finalQuery = finalQuery.Where(p => p.SurfaceArea >= minArea && p.SurfaceArea <= maxArea);
@@ -322,7 +371,8 @@ namespace AS1ProjectTeam03
             }
             catch (Exception ex)
             {
-                MessageBox.Show("");
+                MessageBox.Show("Surface Area is missing or is not an integer");
+                checkBoxSearchOnArea.Checked = false;
             }
 
             //Clearing all DataGridView rows
@@ -337,6 +387,35 @@ namespace AS1ProjectTeam03
                 updateCountAndPriceLabelsFiltered(finalQuery.Count(), finalQuery.Average(temp => temp.Price));
             else
                 updateCountAndPriceLabelsFiltered(0,0);
+        }
+
+        //method to bring the form to the initial state
+        private void buttonResetFilters_Click(object sender, EventArgs e)
+        {
+            checkBoxSearchOnArea.Checked = false;
+            checkBoxSearchOnPrice.Checked = false;
+            textBoxMinPrice.Text = "";
+            textBoxMaxPrice.Text = "";
+            textBoxMinArea.Text = "";
+            textBoxMaxArea.Text = "";
+
+            listBoxCities.Items.Clear();
+            listBoxNumberOfBedrooms.Items.Clear();
+            listBoxNumberOfBathrooms.Items.Clear();
+            listBoxHouseTypes.Items.Clear();
+
+            InitializeBothDataGridViews();
+            FeedTheData();
+
+            //by default all the options in ListBoxes need to be selected
+            for (int i = 0; i < listBoxCities.Items.Count; i++)
+                listBoxCities.SetSelected(i, true);
+            for (int i = 0; i < listBoxNumberOfBedrooms.Items.Count; i++)
+                listBoxNumberOfBedrooms.SetSelected(i, true);
+            for (int i = 0; i < listBoxNumberOfBathrooms.Items.Count; i++)
+                listBoxNumberOfBathrooms.SetSelected(i, true);
+            for (int i = 0; i < listBoxHouseTypes.Items.Count; i++)
+                listBoxHouseTypes.SetSelected(i, true);
         }
     }
 }

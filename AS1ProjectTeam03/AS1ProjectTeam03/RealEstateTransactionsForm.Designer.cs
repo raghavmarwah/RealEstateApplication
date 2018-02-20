@@ -143,6 +143,7 @@
             this.buttonResetFilters.TabIndex = 7;
             this.buttonResetFilters.Text = "Reset Filters";
             this.buttonResetFilters.UseVisualStyleBackColor = true;
+            this.buttonResetFilters.Click += new System.EventHandler(this.buttonResetFilters_Click);
             // 
             // listBoxCities
             // 
@@ -392,7 +393,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1353, 1305);
+            this.ClientSize = new System.Drawing.Size(1387, 1305);
             this.Controls.Add(this.labelFilteredTransactionsAveragePrice);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.labelFilteredTransactionsCount);

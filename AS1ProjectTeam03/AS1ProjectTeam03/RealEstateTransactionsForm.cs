@@ -16,12 +16,40 @@ namespace AS1ProjectTeam03
     {
         //Globally defined list to store the data from the XML document.
         List<House> initialListOfTransactions;
+        //Globally defined list to store the linq modifications as per user selections.
+        List<House> sortedListOfTransactions;
 
         public RealEstateTransactionsForm()
         {
             InitializeComponent();
             this.Text = "Assignment 1 Real Estate Transactions";
 
+            //Registering helper functions with ListBox event handlers.
+            listBoxCities.SelectedIndexChanged += ListBoxCities_SelectedIndexChanged;
+            listBoxNumberOfBedrooms.SelectedIndexChanged += ListBoxNumberOfBedrooms_SelectedIndexChanged;
+            listBoxNumberOfBathrooms.SelectedIndexChanged += ListBoxNumberOfBathrooms_SelectedIndexChanged;
+            listBoxHouseTypes.SelectedIndexChanged += ListBoxHouseTypes_SelectedIndexChanged;
+
+        }
+
+        private void ListBoxHouseTypes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updateDataGridViewFilteredTransactions();
+        }
+
+        private void ListBoxNumberOfBathrooms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updateDataGridViewFilteredTransactions();
+        }
+
+        private void ListBoxNumberOfBedrooms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updateDataGridViewFilteredTransactions();
+        }
+
+        private void ListBoxCities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updateDataGridViewFilteredTransactions();
         }
 
         private void RealEstateTransactionsForm_Load(object sender, EventArgs e)
@@ -76,6 +104,9 @@ namespace AS1ProjectTeam03
                 .ThenBy(data => data.HouseType)
                 .ThenBy(data => data.Price)
                 .Select(data => data);
+
+            //Converting the query to sorted list for later use.
+            sortedListOfTransactions = orderedListOfTransactions.ToList<House>();
 
             foreach (House tempTransaction in orderedListOfTransactions)
             {
@@ -196,5 +227,60 @@ namespace AS1ProjectTeam03
             }
         }
 
+        private void updateDataGridViewFilteredTransactions()
+        {
+            //Creating a list of selected items in the ListBoxes
+            List<string> selectedCities = new List<string>();
+            List<string> selectedNumberOfBedrooms = new List<string>();
+            List<string> selectedNumberOfBathrooms = new List<string>();
+            List<string> selectedHouseTypes = new List<string>();
+
+            //Adding data to above lists
+            for (int i = 0; i < listBoxCities.Items.Count; i++)
+            {
+                if (listBoxCities.GetSelected(i))
+                    selectedCities.Add(listBoxCities.Items[i].ToString());
+            }
+            for (int i = 0; i < listBoxNumberOfBedrooms.Items.Count; i++)
+            {
+                if (listBoxNumberOfBedrooms.GetSelected(i))
+                    selectedNumberOfBedrooms.Add(listBoxNumberOfBedrooms.Items[i].ToString());
+            }
+            for (int i = 0; i < listBoxNumberOfBathrooms.Items.Count; i++)
+            {
+                if (listBoxNumberOfBathrooms.GetSelected(i))
+                    selectedNumberOfBathrooms.Add(listBoxNumberOfBathrooms.Items[i].ToString());
+            }
+            for (int i = 0; i < listBoxHouseTypes.Items.Count; i++)
+            {
+                if (listBoxHouseTypes.GetSelected(i))
+                    selectedHouseTypes.Add(listBoxHouseTypes.Items[i].ToString());
+            }
+
+            //query to slect all houses from the list
+            var finalQuery = sortedListOfTransactions.Select(p => p);
+
+            //multiple independent if conditions for the ListBoxes to work independently and yet function together
+            //each condition checks if there are any selected items in the ListBoxes
+            //using linq to check if the selected items in the respective ListBoxes also exist in the query to filter results.
+            if (selectedCities.Count > 0)
+                finalQuery = finalQuery.Where(p => selectedCities.Contains(p.City));
+            if (selectedNumberOfBedrooms.Count > 0)
+                finalQuery = finalQuery.Where(p => selectedNumberOfBedrooms.Contains(p.Bedrooms.ToString()));
+            if (selectedNumberOfBathrooms.Count > 0)
+                finalQuery = finalQuery.Where(p => selectedNumberOfBathrooms.Contains(p.Bathrooms.ToString()));
+            if (selectedHouseTypes.Count > 0)
+                finalQuery = finalQuery.Where(p => selectedHouseTypes.Contains(p.HouseType));
+
+            //Clearing all DataGridView rows
+            dataGridViewFilteredTransactions.Rows.Clear();
+
+            //updating the DataGridView with filtered houses
+            foreach (House tempTransaction in finalQuery)
+            {
+                dataGridViewFilteredTransactions.Rows.Add(tempTransaction.City, tempTransaction.Address, tempTransaction.Bedrooms, tempTransaction.Bathrooms, tempTransaction.SurfaceArea, tempTransaction.HouseType, tempTransaction.Price);
+            }
+            updateCountAndPriceLabelsFiltered(finalQuery.Count(), finalQuery.Average(temp => temp.Price));
+        }
     }
 }

@@ -84,7 +84,7 @@
             this.dataGridViewAllTransactions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewAllTransactions.Name = "dataGridViewAllTransactions";
             this.dataGridViewAllTransactions.RowTemplate.Height = 37;
-            this.dataGridViewAllTransactions.Size = new System.Drawing.Size(1292, 309);
+            this.dataGridViewAllTransactions.Size = new System.Drawing.Size(1375, 309);
             this.dataGridViewAllTransactions.TabIndex = 1;
             // 
             // label2
@@ -349,7 +349,7 @@
             this.dataGridViewFilteredTransactions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewFilteredTransactions.Name = "dataGridViewFilteredTransactions";
             this.dataGridViewFilteredTransactions.RowTemplate.Height = 37;
-            this.dataGridViewFilteredTransactions.Size = new System.Drawing.Size(1289, 261);
+            this.dataGridViewFilteredTransactions.Size = new System.Drawing.Size(1372, 261);
             this.dataGridViewFilteredTransactions.TabIndex = 29;
             // 
             // labelFilteredTransactionsAveragePrice
@@ -393,7 +393,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1387, 1305);
+            this.ClientSize = new System.Drawing.Size(1489, 1305);
             this.Controls.Add(this.labelFilteredTransactionsAveragePrice);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.labelFilteredTransactionsCount);

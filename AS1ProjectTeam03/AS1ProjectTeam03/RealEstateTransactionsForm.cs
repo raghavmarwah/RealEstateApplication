@@ -45,62 +45,62 @@ namespace AS1ProjectTeam03
         private void CheckBoxSearchOnArea_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxSearchOnArea.Checked)
-                updateDataGridViewFilteredTransactions();
+                UpdateDataGridViewFilteredTransactions();
         }
 
         private void CheckBoxSearchOnPrice_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxSearchOnPrice.Checked)
-                updateDataGridViewFilteredTransactions();
+                UpdateDataGridViewFilteredTransactions();
         }
 
         private void TextBoxMaxArea_TextChanged(object sender, EventArgs e)
         {
             if (checkBoxSearchOnArea.Checked)
-                updateDataGridViewFilteredTransactions();
+                UpdateDataGridViewFilteredTransactions();
         }
 
         private void TextBoxMinArea_TextChanged(object sender, EventArgs e)
         {
             if (checkBoxSearchOnArea.Checked)
-                updateDataGridViewFilteredTransactions();
+                UpdateDataGridViewFilteredTransactions();
         }
 
         private void TextBoxMaxPrice_TextChanged(object sender, EventArgs e)
         {
             if (checkBoxSearchOnPrice.Checked)
-                updateDataGridViewFilteredTransactions();
+                UpdateDataGridViewFilteredTransactions();
         }
 
         private void TextBoxMinPrice_TextChanged(object sender, EventArgs e)
         {
             if (checkBoxSearchOnPrice.Checked)
-                updateDataGridViewFilteredTransactions();
+                UpdateDataGridViewFilteredTransactions();
         }
 
         private void ListBoxHouseTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            updateDataGridViewFilteredTransactions();
+            UpdateDataGridViewFilteredTransactions();
         }
 
         private void ListBoxNumberOfBathrooms_SelectedIndexChanged(object sender, EventArgs e)
         {
-            updateDataGridViewFilteredTransactions();
+            UpdateDataGridViewFilteredTransactions();
         }
 
         private void ListBoxNumberOfBedrooms_SelectedIndexChanged(object sender, EventArgs e)
         {
-            updateDataGridViewFilteredTransactions();
+            UpdateDataGridViewFilteredTransactions();
         }
 
         private void ListBoxCities_SelectedIndexChanged(object sender, EventArgs e)
         {
-            updateDataGridViewFilteredTransactions();
+            UpdateDataGridViewFilteredTransactions();
         }
 
         private void RealEstateTransactionsForm_Load(object sender, EventArgs e)
         {
-            this.Width = 680;
+            this.Width = 720;
             this.Height = 770;
 
             InitializeBothDataGridViews();
@@ -146,7 +146,12 @@ namespace AS1ProjectTeam03
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                    Application.Exit();
                 }
+            }
+            else
+            {
+                Application.Exit();
             }
 
         }
@@ -204,13 +209,13 @@ namespace AS1ProjectTeam03
             //Setting initial values to the Count and Average Price labels.
             if (orderedListOfTransactions.Count() > 0)
             {
-                updateCountAndPriceLabels(orderedListOfTransactions.Count(), orderedListOfTransactions.Average(temp => temp.Price));
-                updateCountAndPriceLabelsFiltered(orderedListOfTransactions.Count(), orderedListOfTransactions.Average(temp => temp.Price));
+                UpdateCountAndPriceLabels(orderedListOfTransactions.Count(), orderedListOfTransactions.Average(temp => temp.Price));
+                UpdateCountAndPriceLabelsFiltered(orderedListOfTransactions.Count(), orderedListOfTransactions.Average(temp => temp.Price));
             }
             else
             {
-                updateCountAndPriceLabels(0,0);
-                updateCountAndPriceLabelsFiltered(0,0);
+                UpdateCountAndPriceLabels(0,0);
+                UpdateCountAndPriceLabelsFiltered(0,0);
             }
         }
 
@@ -268,12 +273,12 @@ namespace AS1ProjectTeam03
 
         }
 
-        private void updateCountAndPriceLabels(int count, double averagePrice)
+        private void UpdateCountAndPriceLabels(int count, double averagePrice)
         {
             labelAllTransactionsCount.Text = count.ToString();
             labelAllTransactionsAveragePrice.Text = averagePrice.ToString("c2");
         }
-        private void updateCountAndPriceLabelsFiltered(int count, double averagePrice)
+        private void UpdateCountAndPriceLabelsFiltered(int count, double averagePrice)
         {
             labelFilteredTransactionsCount.Text = count.ToString();
             labelFilteredTransactionsAveragePrice.Text = averagePrice.ToString("c2");
@@ -297,7 +302,7 @@ namespace AS1ProjectTeam03
             }
         }
 
-        private void updateDataGridViewFilteredTransactions()
+        private void UpdateDataGridViewFilteredTransactions()
         {
             //Creating a list of selected items in the ListBoxes
             List<string> selectedCities = new List<string>();
@@ -384,9 +389,9 @@ namespace AS1ProjectTeam03
                 dataGridViewFilteredTransactions.Rows.Add(tempTransaction.City, tempTransaction.Address, tempTransaction.Bedrooms, tempTransaction.Bathrooms, tempTransaction.SurfaceArea, tempTransaction.HouseType, tempTransaction.Price);
             }
             if(finalQuery.Count()>0)
-                updateCountAndPriceLabelsFiltered(finalQuery.Count(), finalQuery.Average(temp => temp.Price));
+                UpdateCountAndPriceLabelsFiltered(finalQuery.Count(), finalQuery.Average(temp => temp.Price));
             else
-                updateCountAndPriceLabelsFiltered(0,0);
+                UpdateCountAndPriceLabelsFiltered(0,0);
         }
 
         //method to bring the form to the initial state

@@ -38,7 +38,7 @@
             this.buttonResetFilters = new System.Windows.Forms.Button();
             this.listBoxCities = new System.Windows.Forms.ListBox();
             this.listBoxNumberOfBedrooms = new System.Windows.Forms.ListBox();
-            this.listBoxNumberOfbathrooms = new System.Windows.Forms.ListBox();
+            this.listBoxNumberOfBathrooms = new System.Windows.Forms.ListBox();
             this.listBoxHouseTypes = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -164,15 +164,15 @@
             this.listBoxNumberOfBedrooms.Size = new System.Drawing.Size(132, 229);
             this.listBoxNumberOfBedrooms.TabIndex = 9;
             // 
-            // listBoxNumberOfbathrooms
+            // listBoxNumberOfBathrooms
             // 
-            this.listBoxNumberOfbathrooms.FormattingEnabled = true;
-            this.listBoxNumberOfbathrooms.ItemHeight = 25;
-            this.listBoxNumberOfbathrooms.Location = new System.Drawing.Point(740, 546);
-            this.listBoxNumberOfbathrooms.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.listBoxNumberOfbathrooms.Name = "listBoxNumberOfbathrooms";
-            this.listBoxNumberOfbathrooms.Size = new System.Drawing.Size(127, 229);
-            this.listBoxNumberOfbathrooms.TabIndex = 10;
+            this.listBoxNumberOfBathrooms.FormattingEnabled = true;
+            this.listBoxNumberOfBathrooms.ItemHeight = 25;
+            this.listBoxNumberOfBathrooms.Location = new System.Drawing.Point(740, 546);
+            this.listBoxNumberOfBathrooms.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listBoxNumberOfBathrooms.Name = "listBoxNumberOfBathrooms";
+            this.listBoxNumberOfBathrooms.Size = new System.Drawing.Size(127, 229);
+            this.listBoxNumberOfBathrooms.TabIndex = 10;
             // 
             // listBoxHouseTypes
             // 
@@ -392,7 +392,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1353, 1305);
+            this.ClientSize = new System.Drawing.Size(1387, 1305);
             this.Controls.Add(this.labelFilteredTransactionsAveragePrice);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.labelFilteredTransactionsCount);
@@ -416,7 +416,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.listBoxHouseTypes);
-            this.Controls.Add(this.listBoxNumberOfbathrooms);
+            this.Controls.Add(this.listBoxNumberOfBathrooms);
             this.Controls.Add(this.listBoxNumberOfBedrooms);
             this.Controls.Add(this.listBoxCities);
             this.Controls.Add(this.buttonResetFilters);
@@ -450,7 +450,7 @@
         private System.Windows.Forms.Button buttonResetFilters;
         private System.Windows.Forms.ListBox listBoxCities;
         private System.Windows.Forms.ListBox listBoxNumberOfBedrooms;
-        private System.Windows.Forms.ListBox listBoxNumberOfbathrooms;
+        private System.Windows.Forms.ListBox listBoxNumberOfBathrooms;
         private System.Windows.Forms.ListBox listBoxHouseTypes;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;

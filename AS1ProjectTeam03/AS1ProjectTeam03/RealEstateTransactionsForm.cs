@@ -67,7 +67,7 @@ namespace AS1ProjectTeam03
 
         }
 
-        //Sort data from list using LINQ and Lambdas and feed it to DataGridViews.
+        //Sort data from list using LINQ and feed it to DataGridViews and ListBoxes.
         private void FeedTheDataGridViews()
         {
             //Sorting the data by City, House Type and Price in order.
@@ -82,11 +82,35 @@ namespace AS1ProjectTeam03
                 //Feeding data to DataGridViews
                 dataGridViewAllTransactions.Rows.Add(tempTransaction.City, tempTransaction.Address, tempTransaction.Bedrooms, tempTransaction.Bathrooms, tempTransaction.SurfaceArea, tempTransaction.HouseType, tempTransaction.Price);
                 dataGridViewFilteredTransactions.Rows.Add(tempTransaction.City, tempTransaction.Address, tempTransaction.Bedrooms, tempTransaction.Bathrooms, tempTransaction.SurfaceArea, tempTransaction.HouseType, tempTransaction.Price);
+
+                //Feeding data to ListBoxes
+                if(!listBoxCities.Items.Contains(tempTransaction.City))
+                    listBoxCities.Items.Add(tempTransaction.City);
+                if (!listBoxHouseTypes.Items.Contains(tempTransaction.HouseType))
+                    listBoxHouseTypes.Items.Add(tempTransaction.HouseType);
+                if (!listBoxNumberOfBedrooms.Items.Contains(tempTransaction.Bedrooms))
+                    listBoxNumberOfBedrooms.Items.Add(tempTransaction.Bedrooms);
+                if (!listBoxNumberOfBathrooms.Items.Contains(tempTransaction.Bathrooms))
+                    listBoxNumberOfBathrooms.Items.Add(tempTransaction.Bathrooms);
+
             }
+
+            //Setting ListBoxes to sorted
+            listBoxCities.Sorted = true;
+            listBoxHouseTypes.Sorted = true;
+            listBoxNumberOfBedrooms.Sorted = true;
+            listBoxNumberOfBathrooms.Sorted = true;
+
+            //Enabling multi-select for all ListBoxes
+            listBoxCities.SelectionMode = SelectionMode.MultiExtended;
+            listBoxHouseTypes.SelectionMode = SelectionMode.MultiExtended;
+            listBoxNumberOfBedrooms.SelectionMode = SelectionMode.MultiExtended;
+            listBoxNumberOfBathrooms.SelectionMode = SelectionMode.MultiExtended;
 
             //Setting initial values to the Count and Average Price labels.
             updateCountAndPriceLabels(orderedListOfTransactions.Count(), orderedListOfTransactions.Average(temp => temp.Price));
             updateCountAndPriceLabelsFiltered(orderedListOfTransactions.Count(), orderedListOfTransactions.Average(temp => temp.Price));
+
         }
 
         //Method to set up the properties for both the DataGridViews on the form.

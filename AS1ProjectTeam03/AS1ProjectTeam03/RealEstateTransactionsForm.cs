@@ -59,8 +59,18 @@ namespace AS1ProjectTeam03
 
             InitializeBothDataGridViews();
             GetRentalHousingFromXML();
-            FeedTheDataGridViews();
-            
+            FeedTheData();
+
+            //by default all the options in ListBoxes need to be selected
+            for (int i = 0; i < listBoxCities.Items.Count; i++)
+                listBoxCities.SetSelected(i, true);
+            for (int i = 0; i < listBoxNumberOfBedrooms.Items.Count; i++)
+                listBoxNumberOfBedrooms.SetSelected(i, true);
+            for (int i = 0; i < listBoxNumberOfBathrooms.Items.Count; i++)
+                listBoxNumberOfBathrooms.SetSelected(i, true);
+            for (int i = 0; i < listBoxHouseTypes.Items.Count; i++)
+                listBoxHouseTypes.SetSelected(i, true);
+
 
         }
 
@@ -96,7 +106,7 @@ namespace AS1ProjectTeam03
         }
 
         //Sort data from list using LINQ and feed it to DataGridViews and ListBoxes.
-        private void FeedTheDataGridViews()
+        private void FeedTheData()
         {
             //Sorting the data by City, House Type and Price in order.
             var orderedListOfTransactions = initialListOfTransactions
@@ -113,18 +123,25 @@ namespace AS1ProjectTeam03
                 //Feeding data to DataGridViews
                 dataGridViewAllTransactions.Rows.Add(tempTransaction.City, tempTransaction.Address, tempTransaction.Bedrooms, tempTransaction.Bathrooms, tempTransaction.SurfaceArea, tempTransaction.HouseType, tempTransaction.Price);
                 dataGridViewFilteredTransactions.Rows.Add(tempTransaction.City, tempTransaction.Address, tempTransaction.Bedrooms, tempTransaction.Bathrooms, tempTransaction.SurfaceArea, tempTransaction.HouseType, tempTransaction.Price);
-
-                //Feeding data to ListBoxes
-                if(!listBoxCities.Items.Contains(tempTransaction.City))
-                    listBoxCities.Items.Add(tempTransaction.City);
-                if (!listBoxHouseTypes.Items.Contains(tempTransaction.HouseType))
-                    listBoxHouseTypes.Items.Add(tempTransaction.HouseType);
-                if (!listBoxNumberOfBedrooms.Items.Contains(tempTransaction.Bedrooms))
-                    listBoxNumberOfBedrooms.Items.Add(tempTransaction.Bedrooms);
-                if (!listBoxNumberOfBathrooms.Items.Contains(tempTransaction.Bathrooms))
-                    listBoxNumberOfBathrooms.Items.Add(tempTransaction.Bathrooms);
-
+                
             }
+
+            //Feeding data to ListBoxes using linq
+            var queryCities = initialListOfTransactions.Select(p => p.City).Distinct();
+            foreach(var temp in queryCities)
+                listBoxCities.Items.Add(temp.ToString());
+
+            var queryBedrooms = initialListOfTransactions.Select(p => p.Bedrooms).Distinct();
+            foreach (var temp in queryBedrooms)
+                listBoxNumberOfBedrooms.Items.Add(temp.ToString());
+
+            var queryBathrooms = initialListOfTransactions.Select(p => p.Bathrooms).Distinct();
+            foreach (var temp in queryBathrooms)
+                listBoxNumberOfBathrooms.Items.Add(temp.ToString());
+
+            var queryHouse = initialListOfTransactions.Select(p => p.HouseType).Distinct();
+            foreach (var temp in queryHouse)
+                listBoxHouseTypes.Items.Add(temp.ToString());
 
             //Setting ListBoxes to sorted
             listBoxCities.Sorted = true;
@@ -139,9 +156,16 @@ namespace AS1ProjectTeam03
             listBoxNumberOfBathrooms.SelectionMode = SelectionMode.MultiExtended;
 
             //Setting initial values to the Count and Average Price labels.
-            updateCountAndPriceLabels(orderedListOfTransactions.Count(), orderedListOfTransactions.Average(temp => temp.Price));
-            updateCountAndPriceLabelsFiltered(orderedListOfTransactions.Count(), orderedListOfTransactions.Average(temp => temp.Price));
-
+            if (orderedListOfTransactions.Count() > 0)
+            {
+                updateCountAndPriceLabels(orderedListOfTransactions.Count(), orderedListOfTransactions.Average(temp => temp.Price));
+                updateCountAndPriceLabelsFiltered(orderedListOfTransactions.Count(), orderedListOfTransactions.Average(temp => temp.Price));
+            }
+            else
+            {
+                updateCountAndPriceLabels(0,0);
+                updateCountAndPriceLabelsFiltered(0,0);
+            }
         }
 
         //Method to set up the properties for both the DataGridViews on the form.
@@ -272,6 +296,35 @@ namespace AS1ProjectTeam03
             if (selectedHouseTypes.Count > 0)
                 finalQuery = finalQuery.Where(p => selectedHouseTypes.Contains(p.HouseType));
 
+            //checking price constraint
+            try
+            {
+                if (checkBoxSearchOnPrice.Checked)
+                {
+                    double minPrice = double.Parse(textBoxMinPrice.Text);
+                    double maxPrice = double.Parse(textBoxMaxPrice.Text);
+                    finalQuery = finalQuery.Where(p => p.Price >= minPrice && p.Price <= maxPrice);
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show("");
+            }
+
+            //checkig surface area constraint
+            try
+            {
+                if (checkBoxSearchOnArea.Checked)
+                {
+                    double minArea = double.Parse(textBoxMinArea.Text);
+                    double maxArea = double.Parse(textBoxMaxArea.Text);
+                    finalQuery = finalQuery.Where(p => p.SurfaceArea >= minArea && p.SurfaceArea <= maxArea);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("");
+            }
+
             //Clearing all DataGridView rows
             dataGridViewFilteredTransactions.Rows.Clear();
 
@@ -280,7 +333,10 @@ namespace AS1ProjectTeam03
             {
                 dataGridViewFilteredTransactions.Rows.Add(tempTransaction.City, tempTransaction.Address, tempTransaction.Bedrooms, tempTransaction.Bathrooms, tempTransaction.SurfaceArea, tempTransaction.HouseType, tempTransaction.Price);
             }
-            updateCountAndPriceLabelsFiltered(finalQuery.Count(), finalQuery.Average(temp => temp.Price));
+            if(finalQuery.Count()>0)
+                updateCountAndPriceLabelsFiltered(finalQuery.Count(), finalQuery.Average(temp => temp.Price));
+            else
+                updateCountAndPriceLabelsFiltered(0,0);
         }
     }
 }
